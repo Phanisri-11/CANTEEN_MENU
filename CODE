@@ -1,0 +1,141 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double subtotal = 0.0;
+        boolean ordering = true;
+
+        // Store ordered items
+        List<String> orderedItems = new ArrayList<>();
+
+        while (ordering) {
+            // Display main menu as a table
+            System.out.println("\n==============================");
+            System.out.println("|   College Canteen Menu     |");
+            System.out.println("==============================");
+            System.out.println("| 1 | Tiffins                |");
+            System.out.println("| 2 | Lunch                  |");
+            System.out.println("| 3 | Snacks                 |");
+            System.out.println("| 4 | Beverages              |");
+            System.out.println("| 5 | Exit                   |");
+            System.out.println("==============================");
+            System.out.print("Choose a category: ");
+            int category = sc.nextInt();
+
+            switch (category) {
+                case 1: // Tiffins
+                    System.out.println("\n--- Tiffins ---");
+                    System.out.println("| 1 | Idly       | Rs.20 |");
+                    System.out.println("| 2 | Wada       | Rs.25 |");
+                    System.out.println("| 3 | Dosa       | Rs.40 |");
+                    System.out.println("| 4 | Chapathi   | Rs.30 |");
+                    System.out.println("| 5 | Poori      | Rs.35 |");
+                    System.out.println("| 6 | Paratha    | Rs.50 |");
+                    System.out.print("Choose a tiffin: ");
+                    int tiffin = sc.nextInt();
+                    switch (tiffin) {
+                        case 1: subtotal += 20; orderedItems.add("Idly - Rs.20"); break;
+                        case 2: subtotal += 25; orderedItems.add("Wada - Rs.25"); break;
+                        case 3: subtotal += 40; orderedItems.add("Dosa - Rs.40"); break;
+                        case 4: subtotal += 30; orderedItems.add("Chapathi - Rs.30"); break;
+                        case 5: subtotal += 35; orderedItems.add("Poori - Rs.35"); break;
+                        case 6: subtotal += 50; orderedItems.add("Paratha - Rs.50"); break;
+                        default: System.out.println("Invalid choice");
+                    }
+                    break;
+
+                case 2: // Lunch
+                    System.out.println("\n--- Lunch ---");
+                    System.out.println("| 1 | Veg Meals     | Rs.80  |");
+                    System.out.println("| 2 | Non-Veg Meals | Rs.120 |");
+                    System.out.println("| 3 | Biryani       | Rs.150 |");
+                    System.out.println("| 4 | Curries       | Rs.100 |");
+                    System.out.print("Choose a lunch item: ");
+                    int lunch = sc.nextInt();
+                    switch (lunch) {
+                        case 1: subtotal += 80; orderedItems.add("Veg Meals - Rs.80"); break;
+                        case 2: subtotal += 120; orderedItems.add("Non-Veg Meals - Rs.120"); break;
+                        case 3: subtotal += 150; orderedItems.add("Biryani - Rs.150"); break;
+                        case 4: subtotal += 100; orderedItems.add("Curries - Rs.100"); break;
+                        default: System.out.println("Invalid choice");
+                    }
+                    break;
+
+                case 3: // Snacks
+                    System.out.println("\n--- Snacks ---");
+                    System.out.println("| 1 | Samosa  | Rs.15 |");
+                    System.out.println("| 2 | Jilebi  | Rs.20 |");
+                    System.out.print("Choose a snack: ");
+                    int snack = sc.nextInt();
+                    switch (snack) {
+                        case 1: subtotal += 15; orderedItems.add("Samosa - Rs.15"); break;
+                        case 2: subtotal += 20; orderedItems.add("Jilebi - Rs.20"); break;
+                        default: System.out.println("Invalid choice");
+                    }
+                    break;
+
+                case 4: // Beverages
+                    System.out.println("\n--- Beverages ---");
+                    System.out.println("| 1  | Coke        | Rs.30 |");
+                    System.out.println("| 2  | Diet Coke   | Rs.35 |");
+                    System.out.println("| 3  | Thumbs Up   | Rs.30 |");
+                    System.out.println("| 4  | Pulpy Orange| Rs.25 |");
+                    System.out.println("| 5  | Sprite      | Rs.30 |");
+                    System.out.println("| 6  | Tea         | Rs.10 |");
+                    System.out.println("| 7  | Lemon Tea   | Rs.15 |");
+                    System.out.println("| 8  | Ginger Tea  | Rs.15 |");
+                    System.out.println("| 9  | Coffee      | Rs.20 |");
+                    System.out.println("| 10 | Milk        | Rs.15 |");
+                    System.out.print("Choose a beverage: ");
+                    int bev = sc.nextInt();
+                    switch (bev) {
+                        case 1: subtotal += 30; orderedItems.add("Coke - Rs.30"); break;
+                        case 2: subtotal += 35; orderedItems.add("Diet Coke - Rs.35"); break;
+                        case 3: subtotal += 30; orderedItems.add("Thumbs Up - Rs.30"); break;
+                        case 4: subtotal += 25; orderedItems.add("Pulpy Orange - Rs.25"); break;
+                        case 5: subtotal += 30; orderedItems.add("Sprite - Rs.30"); break;
+                        case 6: subtotal += 10; orderedItems.add("Tea - Rs.10"); break;
+                        case 7: subtotal += 15; orderedItems.add("Lemon Tea - Rs.15"); break;
+                        case 8: subtotal += 15; orderedItems.add("Ginger Tea - Rs.15"); break;
+                        case 9: subtotal += 20; orderedItems.add("Coffee - Rs.20"); break;
+                        case 10: subtotal += 15; orderedItems.add("Milk - Rs.15"); break;
+                        default: System.out.println("Invalid choice");
+                    }
+                    break;
+
+                case 5: // Exit
+                    ordering = false;
+                    break;
+
+                default:
+                    System.out.println("Invalid category");
+            }
+        }
+
+        // Calculate GST and SGST
+        double gst = subtotal * 0.05;   // 5% GST
+        double sgst = subtotal * 0.05;  // 5% SGST
+        double grandTotal = subtotal + gst + sgst;
+
+        // Print bill in receipt style
+        System.out.println("\n==============================");
+        System.out.println("         COLLEGE CANTEEN       ");
+        System.out.println("==============================");
+        System.out.println("Items Ordered:");
+        for (String item : orderedItems) {
+            System.out.println(" - " + item);
+        }
+        System.out.println("------------------------------");
+        System.out.printf("Subtotal        : Rs. %.2f\n", subtotal);
+        System.out.printf("GST (5%%)        : Rs. %.2f\n", gst);
+        System.out.printf("SGST (5%%)       : Rs. %.2f\n", sgst);
+        System.out.println("------------------------------");
+        System.out.printf("Grand Total     : Rs. %.2f\n", grandTotal);
+        System.out.println("==============================");
+        System.out.println("   Thank you! Visit Again :)   ");
+        System.out.println("==============================");
+
+        sc.close();
+    }
+}
